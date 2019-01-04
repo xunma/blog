@@ -1,7 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
-    @posts = Post.all
+    if params[:query].present?
+      sql_query = " \
+        posts.title @@ :query \
+        OR posts.content @@ :query \
+        OR users.first_name @@ :query \
+        OR users.last_name @@ :query \
+      "
+      @posts = Post.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @posts = Post.all
+    end
+
   end
 
   def show
@@ -33,6 +44,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+  end
+
+  def my_posts
+    @user = User.find(params[:id])
+    @my_posts = Post.where(user: @user)
   end
 
   private

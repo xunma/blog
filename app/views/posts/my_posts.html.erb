@@ -1,9 +1,17 @@
 <div class="container">
+  <div class="author-info">
+    <div class="big-txt">
+      <%= @user.full_name %>
+    </div>
+    <div class="text-grey">
+      <%= @user.posts_number %> since <%= @user.join_time %>
+    </div>
+  </div>
 
-  <% if @posts.empty? %>
-    <div class="page-center primary-txt-grey">
-      <p>There are no blogs related to your search.</p>
-      <p>Be the first one to write it?</p>
+  <% if @my_posts.empty? && @user == current_user %>
+    <div class="page-left primary-txt-grey">
+      <p>You don't have any blogs at this moment...</p>
+      <p>Share your story. Write one now. </p>
 
       <div class="btn-container">
         <%= link_to new_post_path, class: "my-btn" do %>
@@ -14,7 +22,7 @@
 
   <% end %>
   <div class="post-cards-container col-sm-12 col-md-9">
-    <% @posts.each do |post| %>
+    <% @my_posts.each do |post| %>
       <%= link_to post_path(post) do%>
         <div class="col-sm-12 col-md-6">
           <div class="post-card">
