@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_120340) do
     t.text "content"
     t.date "date"
     t.boolean "published", default: false
+    t.integer "view", default: 1
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

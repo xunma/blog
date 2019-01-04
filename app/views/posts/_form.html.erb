@@ -1,20 +1,28 @@
 <%= simple_form_for(@post) do |f| %>
-  <%= f.input :title,
-              required: true,
-              placeholder: "Title",
-              label: false  %>
-  <%= f.input :date,
-              required: true,
-              placeholder: "Title",
-              label: false  %>
-  <%= f.input :published,
-              required: true,
-              placeholder: "Title",
-              label: false  %>
-  <%= f.input :content,
-              required: true,
-              placeholder: "Content",
-              label: false %>
+  <div class="col-sm-12 col-md-8 col-md-offset-2">
+    <div class="form-container">
+      <%= f.input :title,
+                  required: true,
+                  placeholder: "Title",
+                  label: false,
+                  input_html: { class: 'no-border-form primary-txt'}  %>
+      <hr>
+      <%= f.input :content,
+                  required: true,
+                  placeholder: "Write something here...",
+                  label: false,
+                  input_html: { class: 'no-border-form content-input'}%>
+      <div class="form-actions">
+        <%= f.input :date,
+                      value: f.object.try(:strftime, "%m/%d/%y"),
+                      label: false,
+                      input_html: { class: 'date-input'}  %>
 
-  <%= f.button :submit, "Submit", class: 'my-btn' %>
+        <%= f.input :published,
+                    label: "Published" %>
+
+        <%= f.button :submit, "Post", class: 'my-btn' %>
+      </div>
+    </div>
+  </div>
 <% end %>

@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   def index
     if params[:query].present?
       sql_query = " \
-        posts.title @@ :query \
-        OR posts.content @@ :query \
+        posts.content  @@ :query \
+        OR posts.title @@ :query \
         OR users.first_name @@ :query \
         OR users.last_name @@ :query \
       "
@@ -12,10 +12,13 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
-
   end
 
   def show
+    unless @post.user == current_user
+      @post.view += 1
+      @post.save!
+    end
   end
 
   def new
@@ -24,10 +27,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     if @post.save
-      #redirect_to feed_path, notice: 'Charity successfully created.'
+      redirect_to posts_path, notice: 'Your blog is posted!'
     else
-      render :new
+      render :new, notice: 'Sorry, there is an error'
     end
   end
 
@@ -36,9 +40,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), notice: 'Your blog is updated!'
     else
-      render :edit
+      render :edit, notice: 'Sorry, there is an error. Try again!'
     end
   end
 
