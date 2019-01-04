@@ -1,0 +1,49 @@
+<div class="my-navbar">
+  <%= link_to posts_path, class: "navbar-logo" do %>
+    <%= image_tag "pink-aristotle.png", height: 80 %>
+  <% end %>
+
+
+    <%= form_tag posts_path, method: :get do %>
+     <div class="search-bar">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control bottom-border-form" %>
+        <button class="transparent">
+          <i class="fas fa-search"></i>
+        </button>
+        </div>
+
+    <% end %>
+
+  <div class="my-navbar-right hidden-xs hidden-sm">
+
+    <% if user_signed_in? %>
+      <!-- Links when logged in -->
+      <%= link_to "Create", new_post_path, class: "my-navbar-item my-navbar-link" %>
+      <%= link_to "My Blogs", my_posts_path(current_user), class: "my-navbar-item my-navbar-link" %>
+
+      <div class="my-navbar-item">
+        <div class="dropdown">
+          <%= link_to "#{current_user.email}", "data-toggle" => "dropdown", class: "my-navbar-link my-navbar-link" %>
+
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "my-navbar-item my-navbar-link" %>
+
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to "Edit profile", edit_user_registration_path(current_user), class: "my-navbar-item my-navbar-link" %>
+            </li>
+            <li>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "my-navbar-item my-navbar-link" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to 'Sign up', new_user_registration_path, class: "my-btn small-btn" %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "my-navbar-item my-navbar-link" %>
+
+    <% end %>
+  </div>
+</div>

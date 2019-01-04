@@ -1,0 +1,17 @@
+.bottom-border-form {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  box-shadow: none;
+  border-radius: 0px;
+
+  &:focus {
+    box-shadow: none;
+    border-color: $pink;
+
+  }
+}
+
+.half-length-form {
+  width: 400px;
+}
