@@ -47,7 +47,7 @@
 
 }
 
-.mark {
+.marked {
   position: absolute;
   right: -5px;
   top: 15px;
@@ -59,7 +59,27 @@
   border-radius: 2px;
   transition: 0.2s;
   &:hover {
-    transform: scale(1.05);
+    text-decoration: none;
+    color: white;
+
+  }
+}
+
+.mark {
+  position: absolute;
+  right: -5px;
+  top: 15px;
+  background-color: white;
+  opacity: 0.8;
+  color: $coral;
+  font-size: 12px;
+  padding: 2px 7px;
+  border-radius: 2px;
+  border: 2px solid $coral;
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: $coral;
 
   }
 }

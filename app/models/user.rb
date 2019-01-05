@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :first_name, presence: true, allow_blank: false
   has_many :posts
+  has_many :marks
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -16,11 +17,7 @@ class User < ApplicationRecord
 
   def posts_number
     n = Post.where(user: self).count
-
-    "Contributed #{n} blog#{s(n)} "
+    "Contributed #{n} #{'blogs'.pluralize(n)} "
   end
 end
 
-def s(number)
-  number > 1 ? 's' : ''
-end

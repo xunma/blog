@@ -1,0 +1,7 @@
+<% marked = Mark.mark?(current_user, post) == true %>
+<% if marked %>
+  <%= link_to 'Marked', unmark_path(post), method: :delte, class: 'marked', remote: true %>
+<% else %>
+  <%= link_to 'Mark', mark_path(post), method: :post, class: 'mark', remote: true%>
+<% end %>
+

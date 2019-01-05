@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :mark, :unmark]
   def index
     if params[:query].present?
       sql_query = " \
@@ -53,6 +53,18 @@ class PostsController < ApplicationController
   def my_posts
     @user = User.find(params[:id])
     @my_posts = Post.where(user: @user)
+  end
+
+  def mark
+    @mark = Mark.new(current_user, @post)
+    if @mark.save
+      respond_to do |format|
+        format.js { render 'marks/mark.js.erb' }
+      end
+    end
+  end
+
+  def unmark
   end
 
   private

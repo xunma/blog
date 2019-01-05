@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :posts
   get '/users/:id/posts', to: 'posts#my_posts', as: :my_posts
+  post 'posts/:id/mark', to: 'posts#mark', as: :mark
+  delete 'posts/:id/mark', to: 'posts#unmark', as: :unmark
+
 end

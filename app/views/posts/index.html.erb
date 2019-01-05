@@ -27,7 +27,7 @@
                 <%= post.user.first_name %>
               </h>
               <h class="text-grey">
-                <%= post.date %> · <%= post.read_time %> · <%= post.view %> view<%= s(post.view) %>
+                <%= post.date %> · <%= post.read_time %> · <%= post.view %> <%= "view".pluralize(post.view) %>
               </h>
             </div>
 

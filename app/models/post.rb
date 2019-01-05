@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :content, presence: true, allow_blank: false
   validates :date, presence: true
   belongs_to :user
+  has_many :favorties
 
   def read_time
     word_count = self.content.split.size
