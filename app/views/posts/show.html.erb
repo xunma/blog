@@ -8,7 +8,7 @@
         <%= link_to @post.user.full_name, my_posts_path(@post.user) %>
       </div>
       <div class="text-grey">
-        <%= @post.date %> · <%= @post.read_time %>
+        <%= @post.date %> · <%= @post.read_time %> · <%= @post.view %> view<%= s(@post.view) %>
       </div>
     </div>
     <div class="post-content">

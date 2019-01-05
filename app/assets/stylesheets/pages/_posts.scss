@@ -23,13 +23,10 @@
     font-weight: 600;
     max-height: 35px;
     max-width: 320px;
-    overflow: scroll;
 
   }
 
-  .post-info {
-    // background-color: $blue;
-  }
+
   .post-date {
     color: rgba(0,0,0,0.5);
     font-size: 12px;
@@ -45,7 +42,6 @@
     padding-top: 10px;
     font-size: 15px;
     height: 95px;
-    overflow: scroll;
 
   }
 
@@ -67,3 +63,9 @@
 
   }
 }
+
+.post-info {
+    font-size: 12px;
+    font-family: $headers-font;
+    margin-top: 10px;
+  }

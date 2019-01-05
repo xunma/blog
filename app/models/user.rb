@@ -16,6 +16,11 @@ class User < ApplicationRecord
 
   def posts_number
     n = Post.where(user: self).count
-    "Contributed #{n} blogs "
+
+    "Contributed #{n} blog#{s(n)} "
   end
+end
+
+def s(number)
+  number > 1 ? 's' : ''
 end

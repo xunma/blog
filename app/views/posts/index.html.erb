@@ -19,26 +19,27 @@
         <div class="col-sm-12 col-md-6">
           <div class="post-card">
             <div class="post-title">
-              <%= post.title %>
+              <%# title = post.title.size > 25 ? post.title.first(20) + "..." : post.title%>
+              <%= post.brief(post.title, 25) %>
             </div>
             <div class="post-info">
               <h class="post-author">
                 <%= post.user.first_name %>
               </h>
-              <h class="post-date">
-                <%= post.date %>
+              <h class="text-grey">
+                <%= post.date %> · <%= post.read_time %> · <%= post.view %> view<%= s(post.view) %>
               </h>
             </div>
 
             <div class="post-content">
-              <%= post.content %>
+              <%= post.brief(post.content, 150) %>
             </div>
-            <%#= link_to post_path(post) do %>
-              <div class="mark">
-                mark
-              </div>
 
-            <%# end %>
+            <div class="mark">
+               mark
+            </div>
+
+
           </div>
         </div>
       <% end %>
