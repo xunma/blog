@@ -47,6 +47,30 @@
 
 }
 
+
+
+.post-info {
+    font-size: 12px;
+    font-family: $headers-font;
+    margin-top: 10px;
+  }
+
+.card-link {
+  font-size: 12px;
+  font-family: $headers-font;
+  color: $light-navy;
+  position: absolute;
+  left: 21px;
+  bottom: 21px;
+  &:hover {
+    text-decoration: none;
+    color: $blue;
+  }
+}
+
+
+
+
 .marked {
   position: absolute;
   right: -5px;
@@ -55,7 +79,9 @@
   opacity: 0.8;
   color: white;
   font-size: 12px;
-  padding: 2px 7px;
+  width: 56px;
+  text-align: center;
+  padding: 3px 7px;
   border-radius: 2px;
   transition: 0.2s;
   &:hover {
@@ -69,11 +95,13 @@
   position: absolute;
   right: -5px;
   top: 15px;
+  width: 56px;
+  text-align: center;
   background-color: white;
   opacity: 0.8;
   color: $coral;
   font-size: 12px;
-  padding: 2px 7px;
+  padding: 1px 7px;
   border-radius: 2px;
   border: 2px solid $coral;
   transition: 0.2s;
@@ -83,9 +111,3 @@
 
   }
 }
-
-.post-info {
-    font-size: 12px;
-    font-family: $headers-font;
-    margin-top: 10px;
-  }

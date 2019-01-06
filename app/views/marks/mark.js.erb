@@ -1,15 +1,4 @@
-var button = document.getElementById(`<%= @organisation.id %>-<%= @organisation.charity? ? 'charity' : 'business' %>`);
-var count = document.getElementById('count');
-var element = `<strong><%= @organisation.followers.length %></strong> <%= "follower".pluralize(@organisation.followers.length) %>`;
+var markButton = document.getElementById(`<%= @post.id %>-post`);
+var link = '<%= j render "shared/mark_button", post: @post %>';
 
-<% if @organisation.charity? %>
-  var link = '<%= j render "shared/charity_button", charity: @charity %>';
-  button.innerHTML=link;
-<% else %>
-  var link = `<%= j render "shared/business_button", business: @business %>`;
-  button.innerHTML=link;
-<% end %>
-
-if (count) {
-  count.innerHTML=element;
-};
+markButton.innerHTML = link;

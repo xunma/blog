@@ -47,7 +47,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    if @post.destroy
+      redirect_to my_posts_path(current_user)
+    end
   end
 
   def my_posts
@@ -56,7 +58,7 @@ class PostsController < ApplicationController
   end
 
   def mark
-    @mark = Mark.new(current_user, @post)
+    @mark = Mark.new(user: current_user, post: @post)
     if @mark.save
       respond_to do |format|
         format.js { render 'marks/mark.js.erb' }
@@ -65,6 +67,12 @@ class PostsController < ApplicationController
   end
 
   def unmark
+    @mark = Mark.where(user: current_user, post: @post).first
+    if @mark.destroy
+      respond_to do |format|
+        format.js { render 'marks/mark.js.erb' }
+      end
+    end
   end
 
   private

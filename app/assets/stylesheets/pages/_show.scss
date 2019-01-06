@@ -1,10 +1,10 @@
 .post-show-container {
   padding-top: 30px;
 
-
   .post-content {
     padding-top: 20px;
     line-height: 30px;
+
   }
 
 
@@ -19,5 +19,64 @@
     }
 
   }
+  .mark {
+     top: 100px;
+  }
+
+  .marked {
+     top: 100px;
+  }
 }
 
+
+.delete {
+
+  position: absolute;
+  right: -5px;
+  top: 100px;
+  width: 56px;
+  text-align: center;
+  background-color: white;
+  opacity: 0.8;
+  color: $light-navy;
+  font-size: 12px;
+  padding: 1px 7px;
+  border-radius: 2px;
+  border: 2px solid $light-navy;
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: $light-navy;
+    transform: scale(1.05)
+  }
+  &:visited {
+    text-decoration: none;
+    color: $light-navy;
+  }
+}
+
+.edit {
+
+  position: absolute;
+  right: -5px;
+  top: 75px;
+  width: 56px;
+  text-align: center;
+  background-color: white;
+  opacity: 0.8;
+  color: $pink;
+  font-size: 12px;
+  padding: 1px 7px;
+  border-radius: 2px;
+  border: 2px solid $pink;
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: $pink;
+    transform: scale(1.05)
+  }
+   &:visited {
+    text-decoration: none;
+    color: $pink;
+  }
+}

@@ -1,3 +1,4 @@
+
 <div class="container">
 
   <% if @posts.empty? %>
@@ -14,12 +15,14 @@
 
   <% end %>
   <div class="post-cards-container col-sm-12 col-md-9">
+    <div class="primary-txt">
+      <%= "#{@posts.count} #{'blog'.pluralize(@posts.count)}" %>
+    </div>
     <% @posts.each do |post| %>
-      <%= link_to post_path(post) do%>
+
         <div class="col-sm-12 col-md-6">
           <div class="post-card">
             <div class="post-title">
-              <%# title = post.title.size > 25 ? post.title.first(20) + "..." : post.title%>
               <%= post.brief(post.title, 25) %>
             </div>
             <div class="post-info">
@@ -32,17 +35,22 @@
             </div>
 
             <div class="post-content">
-              <%= post.brief(post.content, 150) %>
+              <%= post.brief(post.content, 130) %>
+              <div class="card-link">
+                  <%= link_to 'read more', post_path(post) %>
+              </div>
             </div>
 
-            <div class="mark">
-               mark
-            </div>
+            <% owner = current_user == post.user %>
+            <% unless owner %>
+              <div id="<%= "#{post.id}-post" %>">
+                <%= render "shared/mark_button", post: post %>
+              </div>
+            <% end %>
 
 
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
 

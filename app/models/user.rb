@@ -15,9 +15,5 @@ class User < ApplicationRecord
     created_at.strftime("%m/%d/%y")
   end
 
-  def posts_number
-    n = Post.where(user: self).count
-    "Contributed #{n} #{'blogs'.pluralize(n)} "
-  end
 end
 
