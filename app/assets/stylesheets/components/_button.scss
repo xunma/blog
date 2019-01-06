@@ -35,3 +35,19 @@
 .btn-container {
   padding: 30px;
 }
+
+.sqaure-btn {
+  border-radius: 0px;
+  border: none;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: $light-blue;
+  background-color: white;
+}
+
+.selected {
+  color: $light-navy;
+  font-weight: bold;
+}
+
+

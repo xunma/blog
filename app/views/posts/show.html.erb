@@ -12,9 +12,6 @@
         <%= @post.date %> · <%= @post.read_time %> · <%= @post.view %> <%= "view".pluralize(@post.view) %>
       </div>
 
-
-
-
     </div>
     <% if owner %>
       <%= link_to 'edit', edit_post_path(@post), class: "edit" %>
