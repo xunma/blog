@@ -1,20 +1,13 @@
 .post-show-container {
   padding-top: 30px;
 
-  .post-info {
-    font-size: 12px;
-    font-family: $headers-font;
-    margin-top: 10px;
-  }
-
   .post-content {
     padding-top: 20px;
     line-height: 30px;
+
   }
 
-  .post-text-grey {
-    color: rgba(0,0,0,0.5)
-  }
+
 
   .post-author {
     a {
@@ -26,5 +19,64 @@
     }
 
   }
+  .mark {
+     top: 100px;
+  }
+
+  .marked {
+     top: 100px;
+  }
 }
 
+
+.delete {
+
+  position: absolute;
+  right: -5px;
+  top: 100px;
+  width: 56px;
+  text-align: center;
+  background-color: white;
+  opacity: 0.8;
+  color: $light-navy;
+  font-size: 12px;
+  padding: 1px 7px;
+  border-radius: 2px;
+  border: 2px solid $light-navy;
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: $light-navy;
+    transform: scale(1.05)
+  }
+  &:visited {
+    text-decoration: none;
+    color: $light-navy;
+  }
+}
+
+.edit {
+
+  position: absolute;
+  right: -5px;
+  top: 75px;
+  width: 56px;
+  text-align: center;
+  background-color: white;
+  opacity: 0.8;
+  color: $coral;
+  font-size: 12px;
+  padding: 1px 7px;
+  border-radius: 2px;
+  border: 2px solid $coral;
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: $coral;
+    transform: scale(1.05)
+  }
+   &:visited {
+    text-decoration: none;
+    color: $coral;
+  }
+}

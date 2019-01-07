@@ -1,14 +1,15 @@
+<% owner = current_user == @user %>
 <div class="container">
   <div class="author-info">
     <div class="big-txt">
       <%= @user.full_name %>
     </div>
     <div class="text-grey">
-      <%= @user.posts_number %> since <%= @user.join_time %>
+      Contributed <%= "#{@user.posts.count} #{'blog'.pluralize(@user.posts.count)}" %> since <%= @user.join_time %>
     </div>
   </div>
 
-  <% if @my_posts.empty? && @user == current_user %>
+  <% if @my_posts.empty? && owner %>
     <div class="page-left primary-txt-grey">
       <p>You don't have any blogs at this moment...</p>
       <p>Share your story. Write one now. </p>
@@ -23,36 +24,45 @@
   <% end %>
   <div class="post-cards-container col-sm-12 col-md-9">
     <% @my_posts.each do |post| %>
-      <%= link_to post_path(post) do%>
         <div class="col-sm-12 col-md-6">
           <div class="post-card">
             <div class="post-title">
-              <%= post.title %>
+              <%= post.brief(post.title, 25) %>
             </div>
-            <div class="post-info">
+              <div class="post-info">
               <h class="post-author">
                 <%= post.user.first_name %>
               </h>
-              <h class="post-date">
-                <%= post.date %>
+              <h class="text-grey">
+                <%= post.date %> · <%= post.read_time %> · <%= post.view %> <%= "view".pluralize(post.view) %>
               </h>
             </div>
+            <% if owner %>
+              <div class="post-content">
+                <%= post.brief(post.content, 130) %>
+                <div class="card-link">
+                <%= link_to 'read more', post_path(post) %> ·
+                <%= link_to 'edit', edit_post_path(post) %> ·
+                <%= link_to 'delete', post_path(post), data: { confirm: "Are you sure you want to delete it forever...?🥺" }, method: :delete%>
+                </div>
 
-            <div class="post-content">
-              <%= post.content %>
-            </div>
-            <%#= link_to post_path(post) do %>
-              <div class="mark">
-                mark
               </div>
-            <%# end %>
+            <% else %>
+              <div class="post-content">
+                <%= post.brief(post.content, 130) %>
+                <div class="card-link">
+                  <%= link_to 'read more', post_path(post) %>
+                </div>
+                <div id="<%="#{post.id}-post" %>">
+                <%= render "shared/mark_button", post: post %>
+              </div>
+              </div>
+            <% end %>
           </div>
         </div>
-      <% end %>
+
     <% end %>
   </div>
-
-
 
 
 </div>

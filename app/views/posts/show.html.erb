@@ -1,5 +1,6 @@
-<div class="container post-show-container">
-  <div class="col-sm-12 col-md-8 col-md-offset-2">
+<% owner = current_user == @post.user %>
+<div>
+  <div class="post-show-container col-sm-12 col-md-8 col-md-offset-2">
     <div class="primary-txt">
       <%= @post.title %>
     </div>
@@ -8,9 +9,18 @@
         <%= link_to @post.user.full_name, my_posts_path(@post.user) %>
       </div>
       <div class="text-grey">
-        <%= @post.date %> · <%= @post.read_time %>
+        <%= @post.date %> · <%= @post.read_time %> · <%= @post.view %> <%= "view".pluralize(@post.view) %>
       </div>
+
     </div>
+    <% if owner %>
+      <%= link_to 'edit', edit_post_path(@post), class: "edit" %>
+      <%= link_to 'delete', post_path(@post), data: { confirm: "Are you sure you want to delete it forever...?🥺" }, method: :delete, class: "delete"%>
+    <% else %>
+      <div id="<%= "#{@post.id}-post" %>">
+        <%= render "shared/mark_button", post: @post %>
+      </div>
+    <% end %>
     <div class="post-content">
       <%= @post.content %>
     </div>

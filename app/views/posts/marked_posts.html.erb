@@ -1,0 +1,46 @@
+<div class="container">
+  <% if @marked_posts.empty?  %>
+    <div class="page-center primary-txt-grey">
+      <p>You don't have any marked blogs at this moment...</p>
+      <div class="button-container">
+        <%= link_to 'Explore', posts_path, class: "my-btn" %>
+      </div>
+    </div>
+  <% else %>
+
+    <div class="post-cards-container col-sm-12 col-md-9">
+      <div class="primary-txt page-top-container">
+        You marked <%= "#{@marked_posts.count} #{'blog'.pluralize(@marked_posts.count)}" %> <strong class="dot">.</strong>
+      </div>
+      <% @marked_posts.each do |post| %>
+          <div class="col-sm-12 col-md-6">
+            <div class="post-card">
+              <div class="post-title">
+                <%= post.brief(post.title, 25) %>
+              </div>
+                <div class="post-info">
+                <h class="post-author">
+                  <%= post.user.first_name %>
+                </h>
+                <h class="text-grey">
+                  <%= post.date %> · <%= post.read_time %> · <%= post.view %> <%= "view".pluralize(post.view) %>
+                </h>
+              </div>
+
+                <div class="post-content">
+                  <%= post.brief(post.content, 130) %>
+                  <div class="card-link">
+                    <%= link_to 'read more', post_path(post) %>
+                  </div>
+                  <div id="<%="#{post.id}-post" %>">
+                  <%= render "shared/mark_button", post: post %>
+                </div>
+                </div>
+
+            </div>
+          </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>

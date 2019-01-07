@@ -1,0 +1,125 @@
+.page-center {
+  margin-top: 150px;
+  text-align: center;
+}
+
+
+.post-card {
+  // background-color: rgba(238, 234, 208, 0.1);
+  border: 1px solid $egg;
+  height: 200px;
+  margin: 15px 0px;
+  padding: 15px 20px;
+  color: $text-color;
+  transition-duration: 0.4s;
+  position: relative;
+
+  &:hover {
+    box-shadow: 10px 12px 16px 0 rgba(0,0,0,0.19),12px 17px 50px 0 rgba(0,0,0,0.12);
+  }
+
+  .post-title {
+    font-size: 25px;
+    font-weight: 600;
+    max-height: 35px;
+    max-width: 320px;
+
+  }
+
+
+  .post-date {
+    color: rgba(0,0,0,0.5);
+    font-size: 12px;
+
+  }
+
+  .post-author {
+    font-size: 12px;
+
+  }
+
+  .post-content {
+    padding-top: 10px;
+    font-size: 15px;
+    height: 95px;
+
+  }
+
+}
+
+
+
+.post-info {
+    font-size: 12px;
+    font-family: $headers-font;
+    margin-top: 10px;
+  }
+
+.card-link {
+  font-size: 12px;
+  font-family: $headers-font;
+  color: $light-navy;
+  position: absolute;
+  left: 21px;
+  bottom: 21px;
+  &:hover {
+    text-decoration: none;
+    color: $blue;
+  }
+}
+
+
+
+
+.marked {
+  position: absolute;
+  right: -5px;
+  top: 15px;
+  background-color: $coral;
+  opacity: 0.8;
+  color: white;
+  font-size: 12px;
+  width: 56px;
+  text-align: center;
+  padding: 3px 7px;
+  border-radius: 2px;
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: white;
+
+  }
+}
+
+.mark {
+  position: absolute;
+  right: -5px;
+  top: 15px;
+  width: 56px;
+  text-align: center;
+  background-color: white;
+  opacity: 0.8;
+  color: $coral;
+  font-size: 12px;
+  padding: 1px 7px;
+  border-radius: 2px;
+  border: 2px solid $coral;
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: $coral;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .post-card {
+    height: 250px;
+    .post-title {
+      font-size: 20px;
+      max-height: 60px;
+    }
+  }
+}
+
+

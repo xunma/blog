@@ -1,0 +1,4 @@
+var markButton = document.getElementById(`<%= @post.id %>-post`);
+var link = '<%= j render "shared/mark_button", post: @post %>';
+
+markButton.innerHTML = link;
