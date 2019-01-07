@@ -27,6 +27,7 @@
     <% if user_signed_in? %>
       <!-- Links when logged in -->
       <%= link_to "Create", new_post_path, class: "my-navbar-item my-navbar-link" %>
+      <%= link_to "Feed", posts_path, class: "my-navbar-item my-navbar-link" %>
       <%= link_to "My Blogs", my_posts_path(current_user), class: "my-navbar-item my-navbar-link" %>
       <%= link_to "Marked Blogs", marked_posts_path(current_user), class: "my-navbar-item my-navbar-link" %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "my-navbar-item my-navbar-link" %>
