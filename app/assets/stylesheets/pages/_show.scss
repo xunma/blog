@@ -64,19 +64,19 @@
   text-align: center;
   background-color: white;
   opacity: 0.8;
-  color: $pink;
+  color: $coral;
   font-size: 12px;
   padding: 1px 7px;
   border-radius: 2px;
-  border: 2px solid $pink;
+  border: 2px solid $coral;
   transition: 0.2s;
   &:hover {
     text-decoration: none;
-    color: $pink;
+    color: $coral;
     transform: scale(1.05)
   }
    &:visited {
     text-decoration: none;
-    color: $pink;
+    color: $coral;
   }
 }

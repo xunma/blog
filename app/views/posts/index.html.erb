@@ -16,12 +16,11 @@
   <div class="post-cards-container col-sm-12 col-md-9">
     <div class="page-top-container">
       <div class="primary-txt">
-        <%= "#{@posts.count} #{'blog'.pluralize(@posts.count)}" %><strong class="dot">.</strong>
+        <%= "#{@posts.count} #{'blog'.pluralize(@posts.count)}" %> <strong class="dot">.</strong>
       </div>
 
       Sort by
-      <button class="sqaure-btn" id="date">Published date</button>
-      <button class="sqaure-btn" id="view"><i class="fas fa-check"></i> Most viewed</button>
+      <%= render "shared/sort_button" %>
     </div>
     <% @posts.each do |post| %>
 

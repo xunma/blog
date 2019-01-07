@@ -1,17 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :mark, :unmark]
+  before_action :set_posts, only: [:index, :sort_by_date]
+
   def index
-    if params[:query].present?
-      sql_query = " \
-        posts.content  @@ :query \
-        OR posts.title @@ :query \
-        OR users.first_name @@ :query \
-        OR users.last_name @@ :query \
-      "
-      @posts = Post.joins(:user).where(sql_query, query: "%#{params[:query]}%")
-    else
-      @posts = Post.all
-    end
+      # @posts_sorted_by_views = @posts.order(view: :desc)
   end
 
   def show
@@ -75,10 +67,31 @@ class PostsController < ApplicationController
     end
   end
 
+  def sort_by_date
+    @posts = @posts.order(date: :desc)
+    respond_to do |format|
+      format.js { render 'posts/sort.js.erb' }
+    end
+  end
+
   private
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_posts
+    if params[:query].present?
+      sql_query = " \
+        posts.content  @@ :query \
+        OR posts.title @@ :query \
+        OR users.first_name @@ :query \
+        OR users.last_name @@ :query \
+      "
+      @posts = Post.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @posts = Post.all.order(date: :desc)
+    end
   end
 
   def post_params

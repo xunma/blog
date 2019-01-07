@@ -13,7 +13,7 @@
 }
 
 .text {
-  min-height: 40vh;
+  min-height: 50vh;
 }
 .content-input {
    height: 500px;
@@ -32,6 +32,7 @@
   color: #999999;
   display: inline-block;
   border-radius: 50px;
+  height: 30px;
 }
 
 .form-check-label {
@@ -43,6 +44,10 @@
 .form-actions {
   display: flex;
   justify-content: flex-start;
+  .form-check {
+    margin-left: 30px;
+
+  }
 }
 
 .form-container {

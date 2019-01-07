@@ -9,7 +9,7 @@
       <hr>
       <%= f.input :content,
                   required: true,
-                  placeholder: "Write something here...",
+                  placeholder: "Write your story here...",
                   label: false,
                   input_html: { class: 'no-border-form content-input'}%>
       <div class="form-actions">
@@ -17,12 +17,11 @@
                       value: f.object.try(:strftime, "%m/%d/%y"),
                       label: false,
                       input_html: { class: 'date-input'}  %>
-
         <%= f.input :published,
-                    label: "Published" %>
-
-        <%= f.button :submit, "Post", class: 'my-btn' %>
+                    label: " Published", class: 'check-field' %>
       </div>
+      <%= f.button :submit, "Post", class: 'form-btn' %>
+
     </div>
   </div>
 <% end %>
