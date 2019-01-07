@@ -14,6 +14,4 @@ class User < ApplicationRecord
   def join_time
     created_at.strftime("%m/%d/%y")
   end
-
 end
-

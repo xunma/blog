@@ -7,6 +7,12 @@
   font-size: 30px;
 }
 
+.secondary-txt {
+  font-family: $headers-font;
+  font-size: 20px;
+  font-weight: 100;
+}
+
 .big-txt {
   font-size: 50px;
   color: $text-color;
@@ -23,5 +29,9 @@
 
 .dot {
   color: $coral;
-  font-size: 70px;
+  font-size: 80px;
+}
+
+.big {
+  font-size: 100px;
 }

@@ -18,9 +18,6 @@
       <div class="primary-txt">
         <%= "#{@posts.count} #{'blog'.pluralize(@posts.count)}" %> <strong class="dot">.</strong>
       </div>
-
-      Sort by
-      <%= render "shared/sort_button" %>
     </div>
     <% @posts.each do |post| %>
 
